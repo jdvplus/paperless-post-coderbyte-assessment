@@ -1,3 +1,5 @@
+import { ReactPropTypes } from 'react';
+
 import { style } from './style';
 
 const Tile = ({ letter, handleTileClick }) => {
@@ -10,3 +12,7 @@ const Tile = ({ letter, handleTileClick }) => {
 
 export default Tile;
 
+Tile.propTypes = {
+  letter: ReactPropTypes.string,
+  handleTileClick: ReactPropTypes.func,
+};
