@@ -56,7 +56,7 @@ const Application = (props) => {
   const tileArr = []
 
   for(const letter of alphabet) {
-    tileArr.push(<Tile letter={letter} click={tileClick}/>)
+    tileArr.push(<Tile letter={letter} click={tileClick} key={letter}/>)
   }
 
   return (
