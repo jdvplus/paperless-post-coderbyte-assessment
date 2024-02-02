@@ -3,17 +3,31 @@ import { useState } from 'react';
 import Tile from './Tile';
 import { style } from './style';
 
-const Application = (props) => {
-  // TODO: add code here
+const Application = () => {
+  const [outputString, setOutputString] = useState('');
+  const [clickedLetters, setClickedLetters] = useState([]);
+
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+  const handleTileClick = (letter) => {
+    setClickedLetters([...clickedLetters, letter]);
+    setOutputString([...outputString, letter]);
+  };
 
   return (
     <section>
       <aside style={style.letterContainer} id='letterContainer'>
-        <Tile letter='A' />
-        <Tile letter='B' />
-        <Tile letter='C' />
+        {alphabet.map((letter) => {
+          return (
+            <Tile
+              letter={letter}
+              key={letter}
+              handleTileClick={handleTileClick}
+            />
+          );
+        })}
       </aside>
-      <div id='outputString'></div>
+      <div id='outputString'>{outputString}</div>
     </section>
   );
 };
