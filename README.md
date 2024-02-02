@@ -1,6 +1,6 @@
 # Paperless Post - Coderbyte Assessment
 
-Make sure the solution contains the keyword "**define-ocg**" in at least one comment in the code, and make sure at least one of the variable is named "varOcg".
+Make sure the solution contains the keyword "**define-ocg**" in at least one comment in the code, and make sure at least one of the variables is named "`varOcg`".
 
 ## React Letter Tiles
 

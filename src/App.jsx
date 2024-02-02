@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Tile from './Tile';
 import { style } from './style';
 
-export default function Application() {
+const Application = () => {
   const [outputString, setOutputString] = useState('');
   const [clickedLetters, setClickedLetters] = useState([]);
 
@@ -30,4 +30,6 @@ export default function Application() {
       <div id='outputString'>{outputString}</div>
     </section>
   );
-}
+};
+
+export default Application;
