@@ -1,13 +1,7 @@
-import React from 'react';
-
 import { style } from './style';
 
-const Tile = ({ letter, handleTileClick }) => {
-  return (
-    <button style={style.letter} onClick={() => handleTileClick(letter)}>
-      {letter}
-    </button>
-  );
+const Tile = (props) => {
+  return <button style={style.letter}>{props.letter}</button>;
 };
 
 export default Tile;

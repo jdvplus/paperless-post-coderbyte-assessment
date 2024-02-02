@@ -1,33 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Tile from './Tile';
 import { style } from './style';
 
-const Application = () => {
-  const [outputString, setOutputString] = useState('');
-  const [clickedLetters, setClickedLetters] = useState([]);
-
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-
-  const handleTileClick = (letter) => {
-    setClickedLetters([...clickedLetters, letter]);
-    setOutputString([...outputString, letter]);
-  };
+const Application = (props) => {
+  // TODO: add code here
 
   return (
     <section>
       <aside style={style.letterContainer} id='letterContainer'>
-        {alphabet.map((letter) => {
-          return (
-            <Tile
-              letter={letter}
-              key={letter}
-              handleTileClick={handleTileClick}
-            />
-          );
-        })}
+        <Tile letter='A' />
+        <Tile letter='B' />
+        <Tile letter='C' />
       </aside>
-      <div id='outputString'>{outputString}</div>
+      <div id='outputString'></div>
     </section>
   );
 };
