@@ -5,13 +5,23 @@ import { style } from './style';
 
 const Application = () => {
   const [outputString, setOutputString] = useState('');
-  const [clickedLetters, setClickedLetters] = useState([]);
 
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const handleTileClick = (letter) => {
-    setClickedLetters([...clickedLetters, letter]);
-    setOutputString([...outputString, letter]);
+    let newOutputString;
+
+    if (
+      outputString.length >= 2 &&
+      letter === outputString[outputString.length - 1] &&
+      letter === outputString[outputString.length - 2]
+    ) {
+      newOutputString = outputString.slice(0, -2) + '_';
+    } else {
+      newOutputString = outputString + letter;
+    }
+
+    setOutputString(newOutputString);
   };
 
   return (
