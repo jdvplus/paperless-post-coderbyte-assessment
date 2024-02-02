@@ -10,8 +10,19 @@ const Application = () => {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const handleTileClick = (letter) => {
+    let newOutputString;
+
+
+    if (outputString.length >= 2 &&
+      letter === outputString[outputString.length - 1] &&
+      letter === outputString[outputString.length - 2]) {
+        newOutputString = outputString.slice(0, -2) + '_';
+      } else {
+        newOutputString = outputString + letter;
+      }
+
     setClickedLetters([...clickedLetters, letter]);
-    setOutputString([...outputString, letter]);
+    setOutputString(newOutputString);
   };
 
   return (
