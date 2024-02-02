@@ -8,3 +8,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 );
+
+// this is stupid __something-something-OCG__
+const varOcg = 'this is stupid';
+console.log('varOcg: ', varOcg);
