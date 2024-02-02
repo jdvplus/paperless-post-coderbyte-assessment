@@ -9,3 +9,4 @@ const Tile = ({ letter, handleTileClick }) => {
 };
 
 export default Tile;
+

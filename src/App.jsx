@@ -4,9 +4,12 @@ import Tile from './Tile';
 import { style } from './style';
 
 const Application = () => {
+  // README requirement: 'define-ocg'
+
   const [outputString, setOutputString] = useState('');
 
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const varOcg = alphabet; // README requirement: declare variable 'varOcg'
 
   const handleTileClick = (letter) => {
     let newOutputString;
@@ -27,7 +30,7 @@ const Application = () => {
   return (
     <section>
       <aside style={style.letterContainer} id='letterContainer'>
-        {alphabet.map((letter) => {
+        {varOcg.map((letter) => {
           return (
             <Tile
               letter={letter}
