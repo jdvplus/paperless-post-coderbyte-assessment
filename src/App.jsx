@@ -28,7 +28,7 @@ const Application = (props) => {
       setOutputString(outputStringClone);
       setLetterCounter(letterCounterClone);
     }
-    return () => console.log('unmounting  old output string')
+    return () => console.log('unmounting old output string')
   }, [outputString])
 
   // on click for tiles
