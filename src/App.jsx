@@ -13,8 +13,9 @@ const Application = (props) => {
 
   // check for triplicate when string changes
   useEffect(() => {
-    console.log('mounting new output string')
+    console.log('mounting new output string:', outputString)
     if(letterCounter[lastLetter] !== undefined && letterCounter[lastLetter] === 3) {
+      console.log('triple found and being replaced');
       // clone state
       const letterCounterClone = {...letterCounter}
       let outputStringClone = outputString;  
@@ -28,7 +29,7 @@ const Application = (props) => {
       setOutputString(outputStringClone);
       setLetterCounter(letterCounterClone);
     }
-    return () => console.log('unmounting old output string')
+    return () => console.log('unmounting old output string:', outputString)
   }, [outputString])
 
   // on click for tiles
