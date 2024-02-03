@@ -12,7 +12,9 @@ const Application = (props) => {
   const [lastLetter, setLastLetter] = useState('')
 
   // check for triplicate when string changes
+  // use effect can run twice, once on unmount and once on mount
   useEffect(() => {
+    // everything in the base function block will run ON MOUNT
     console.log('mounting new output string:', outputString)
     if(letterCounter[lastLetter] !== undefined && letterCounter[lastLetter] === 3) {
       console.log('triple found and being replaced');
@@ -29,6 +31,7 @@ const Application = (props) => {
       setOutputString(outputStringClone);
       setLetterCounter(letterCounterClone);
     }
+    // if you return a function THIS will run on UNMOUNT
     return () => console.log('unmounting old output string:', outputString)
   }, [outputString])
 
