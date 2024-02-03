@@ -11,44 +11,50 @@ const Application = (props) => {
   const [letterCounter, setLetterCounter] = useState({});
   const [lastLetter, setLastLetter] = useState('')
 
+  // check for triplicate when string changes
+  useEffect(() => {
+    console.log('mounting new output string')
+    if(letterCounter[lastLetter] !== undefined && letterCounter[lastLetter] === 3) {
+      // clone state
+      const letterCounterClone = {...letterCounter}
+      let outputStringClone = outputString;  
+      
+      // handle changes
+      delete letterCounterClone[lastLetter];
+      outputStringClone = outputStringClone.slice(0, (outputStringClone.length - 3));
+      outputStringClone += '_'
+      
+      // invoke setters
+      setOutputString(outputStringClone);
+      setLetterCounter(letterCounterClone);
+    }
+    return () => console.log('unmounting  old output string')
+  }, [outputString])
+
   // on click for tiles
   const tileClick = (event) => {
     //prevent rerender
     event.preventDefault();
 
-    // get letter value of button
+    // get letter value of clicked button
     const letter = event.target.innerText;
 
-      // clone letterCounter
+    // clone state
     const letterCounterClone = {...letterCounter}
     let outputStringClone = outputString;  
-    let lastLetterClone = lastLetter;
     
-    // check if trend is continuing
-    console.log(lastLetter, letter)
+    // reset letterCounter if needed
     if(lastLetter !== '' && letter !== lastLetter) delete letterCounterClone[lastLetter];
     
-    // update letter counter
+    // handle letter changes
     if(letterCounterClone[letter] !== undefined) letterCounterClone[letter]++;
     else letterCounterClone[letter] = 1;
-
-    // add new letter
     outputStringClone += letter;
 
-    // handle triple
-    if(letterCounterClone[letter] === 3) {
-      delete letterCounterClone[letter];
-      outputStringClone = outputStringClone.slice(0, (outputStringClone.length - 3));
-      outputStringClone += '_'
-    }
-
-    // prep letterCounterClone
-    lastLetterClone = letter;
-
-    //setters
+    // setters
     setOutputString(outputStringClone);
     setLetterCounter(letterCounterClone);
-    setLastLetter(lastLetterClone);
+    setLastLetter(letter);
   }
 
   // set up alphabet
